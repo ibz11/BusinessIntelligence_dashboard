@@ -1,0 +1,53 @@
+  <?php
+  function humanize_number($input){
+    $input = number_format($input);
+    $input_count = substr_count($input, ',');
+    if($input_count != '0'){
+        if($input_count == '1'){
+            return substr($input, 0, -4).'K';
+        } else if($input_count == '2'){
+            return substr($input, 0, -8).'M';
+        } else if($input_count == '3'){
+            return substr($input, 0,  -12).'B';
+        } else {
+            return;
+        }
+    } else {
+        return $input;
+    }
+  }
+  ?>
+  <?php
+  include 'dbconfig.php';
+
+  // Create connection
+  $conn = new mysqli($dbservername, $dbusername, $dbpassword, $dbname);
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT SUM(`payments`.`amount`) AS salesRevenue FROM `payments` WHERE YEAR(`payments`.`paymentDate`) = '2005';";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      $salesRevenue = $row['salesRevenue'];
+    }
+  } else {
+    echo "0 results";
+  }
+
+  
+  if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      $salesRevenue = $row['salesRevenue'];
+    }
+  } else {
+    echo "0 results";
+  }
+
+  $conn->close();
+  ?>
