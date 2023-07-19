@@ -28,7 +28,8 @@
 </head>
 <body>
     <div class="container">
-<a class="mt-4 btn btn-success"href="{{URL('adddata')}}">Refresh</a>
+    <a class="mt-4 btn btn-success"href="{{URL('/')}}">Home</a>
+<a class="mt-4 btn btn-primary"href="{{URL('adddata')}}">Refresh</a>
 <!-- Add patient -->
 <div class="align-row">
 <div class="item">
@@ -71,8 +72,7 @@
     <form action="{{URL('createservice')}}"  method="post">
     @csrf
     <h1>Add services</h1>
-    <input type="text" name="Doctor_name" placeholder="Doctor's name "><br><br>
-
+ 
     <label for="">Patient ID</label><br><br>
     <select  name="patient_id">
     @foreach($patients as $patients)
@@ -91,7 +91,7 @@
     <input type="number" name="service_time" placeholder="Service time"><br><br>
 
     <label for="">Fees</label>
-    <select  name="fees">
+    <select  name="Fees">
     <option value="3000">Checkup-Ksh.3000</option>
     <option value="20000">Lung treatment-Ksh.20000</option>   
     </select><br><br>

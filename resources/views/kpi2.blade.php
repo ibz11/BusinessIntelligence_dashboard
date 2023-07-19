@@ -1,12 +1,13 @@
 <div class="col-md-6 my-1">
     <div class="card">
-    <div class="card-body">KPI2a (leading):</div>
+    <div class="card-body">KPI2a (leading):Average waiting time for patients</div>
     <div class="card-body"><canvas id="KPI2a"></canvas></div>
 </div>
 </div>
 <div class="col-md-6 my-1">
     <div class="card">
-    <div class="card-body">KPI2b (lagging):</div>
+    <div class="card-body">KPI2b (lagging):Patient satisfaction rating on quality of care
+</div>
     <div class="card-body"><canvas id="KPI2b"></canvas></div>
 </div>
 </div>
@@ -19,7 +20,7 @@
           datasets: [{
             label: 'First Dataset',
             data: [{
-              x: 20,
+              x: 40,
               y: 30,
               r: 20
             }, {
@@ -57,14 +58,14 @@
               beginAtZero: true,
               title: {
                 display: true,
-                text: 'Quantity'
+                text: 'Waiting time'
               }
             },
             x: {
               beginAtZero: true,
               title: {
                 display: true,
-                text: 'Month'
+                text: 'User ID'
               }
             }
           },

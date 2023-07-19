@@ -13,9 +13,9 @@
   <div class="col-md-3 my-1">
         <div class="card">
             <div class="card-body text-center">
-              <strong>Total revenue collected</strong><hr>
+              <strong>Total revenue collected(KSh.)</strong><hr>
               <h1>
-   330m
+              {{$totalrev}}
               </h1>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <div class="card-body text-center">
               <strong>Total High ratings</strong><hr>
               <h1>
-        640
+              {{$totalratings}}
               </h1>
             </div>
         </div>
@@ -35,7 +35,7 @@
             <div class="card-body text-center">
               <strong>Total Patients Served</strong><hr>
               <h1>
-              350
+              {{$totalpatients}}
               </h1>
             </div>
         </div>

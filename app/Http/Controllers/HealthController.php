@@ -16,9 +16,33 @@ return view('dashboard');
 }
     public function home(){
         $totaldoct = DB::table("Doctors")->count('*'); 
-        $totalrev = DB::table("Doctors")->count('*'); 
-        return view('dashboard',compact('totaldoct'));
+        $totalrev = DB::table("services")->sum(DB::raw('Fees'));
+        $totalratings = DB::table("ratings")->where('score',5)->count();
+        $totalpatients = DB::table("ratings")->count();
+    
+        $trained=floor(((DB::table("Doctors")->where('AI_trained','yes')->count())/ (DB::table("Doctors")->count()))*100);
+        $not_trained=floor(((DB::table("Doctors")->where('AI_trained','no')->count())/ (DB::table("Doctors")->count()))*100);
+
+       $time_lesser35 =DB::table("services")->where('service_time','<',35)->count();
+        $time_greater40=DB::table("services")->where('service_time','>',35)->count();
+
+return view('dashboard',compact('totaldoct','totalrev','totalratings','totalpatients','trained',
+'not_trained','time_lesser35' ,'time_greater40'));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function adddata(){
         $patients=Patients::all();
         $doctors=Doctors::all();
@@ -58,7 +82,19 @@ return view('dashboard');
 
 // Start of Key metrics
 public function createservice(Request $request)
-{
+{   
+    $redirect=$this->adddata();
+
+    $service=new Service;
+    $service->patient_id=$request->patient_id;
+    $service->doctor_id=$request->patient_id;
+    $service->waiting_time=$request->waiting_time;
+    $service->service_time=$request->service_time;
+    $service->Fees=$request->Fees;
+    $service->diagnosis=$request->diagnosis;
+    $service->save();
+
+    return $redirect;
 
 }
 
@@ -98,8 +134,6 @@ $rating->comments=$request->comments;
 $rating->save();
 
 return $redirect;
-
-
 
 }
 
