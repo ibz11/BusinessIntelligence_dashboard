@@ -1,3 +1,18 @@
+  
+    @foreach($rating as $rating)
+      {{$rating->score}}
+      @endforeach
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <?php
   function humanize_number($input){
     $input = number_format($input);

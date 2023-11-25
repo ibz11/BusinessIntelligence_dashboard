@@ -11,23 +11,46 @@ use App\Models\Service;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 class HealthController extends Controller
 {
-public function dashboard(){
-return view('dashboard');
+
+
+public function businessdashboard() 
+{
+return view('business.dashboard');
+ }
+
+
+public function home(){
+    return view('home');
+
 }
-    public function home(){
+
+public function businessanalytics(){
         $totaldoct = DB::table("Doctors")->count('*'); 
         $totalrev = DB::table("services")->sum(DB::raw('Fees'));
         $totalratings = DB::table("ratings")->where('score',5)->count();
-        $totalpatients = DB::table("ratings")->count();
+        $totalpatients = DB::table("patients")->count();
     
         $trained=floor(((DB::table("Doctors")->where('AI_trained','yes')->count())/ (DB::table("Doctors")->count()))*100);
         $not_trained=floor(((DB::table("Doctors")->where('AI_trained','no')->count())/ (DB::table("Doctors")->count()))*100);
 
        $time_lesser35 =DB::table("services")->where('service_time','<',35)->count();
-        $time_greater40=DB::table("services")->where('service_time','>',35)->count();
+       $time_greater40=DB::table("services")->where('service_time','>',35)->count();
 
-return view('dashboard',compact('totaldoct','totalrev','totalratings','totalpatients','trained',
-'not_trained','time_lesser35' ,'time_greater40'));
+       $rating=DB::table("ratings")->select('score')->where('score','>=',0)->get();
+       $jsonArray = $rating;
+       $array=json_decode($jsonArray, true);
+       $rating_data;
+
+    //    foreach ($array as $element) {
+    //    $rating_data[] = $element['score']; // Push the element to the new array
+    // }
+       //select('score')->get();
+       //Rating::all();
+       //
+     
+
+return view('business.dashboard',compact('totaldoct','totalrev','totalratings','totalpatients','trained',
+'not_trained','time_lesser35' ,'time_greater40','rating',));
     }
 
 

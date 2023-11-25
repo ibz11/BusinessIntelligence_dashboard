@@ -28,6 +28,7 @@
 </head>
 <body>
     <div class="container">
+        <h1>Business Facing Analytics (ADD Data)</h1>
     <a class="mt-4 btn btn-success"href="{{URL('/')}}">Home</a>
 <a class="mt-4 btn btn-primary"href="{{URL('adddata')}}">Refresh</a>
 <!-- Add patient -->

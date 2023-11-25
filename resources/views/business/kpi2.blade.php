@@ -7,12 +7,30 @@
 <div class="col-md-6 my-1">
     <div class="card">
     <div class="card-body">KPI2b (lagging):Patient satisfaction rating on quality of care
+{{$rating}}
+<h4 id="data"></h4>
+
 </div>
     <div class="card-body"><canvas id="KPI2b"></canvas></div>
 </div>
 </div>
 <script>
       /* KPI2a */
+let arr1='{{$rating}}'
+let arr2=[];
+let data= document.getElementById('data');
+for (let i = 0; i < arr1.length; i++) {
+    let score = arr1[i].score;
+   // console.log(score);
+     arr2.push(score)
+    
+
+  }
+  arr2.clear
+  data.innerHTML=arr2.length
+
+ // console.log(arr2)
+   
       const kpi2a = document.getElementById('KPI2a');
       new Chart(kpi2a, {
         type: 'bubble',

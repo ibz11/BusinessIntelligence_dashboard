@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HealthController;
+use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,11 +20,19 @@ use App\Http\Controllers\HealthController;
 
 
 Route::get('/', [HealthController::class, 'home']);
+
+Route::get('businessdashboard', [HealthController::class, 'businessdashboard']);
+Route::get('businessanalytics', [HealthController::class, 'businessanalytics']);
+
+
 Route::get('adddata', [HealthController::class, 'adddata']);
-Route::get('dashboard', [HealthController::class, 'dashboard']);
 Route::post('createpatient', [HealthController::class, 'createpatient']);
 Route::post('createdoctor', [HealthController::class, 'createdoctor']);
-
 Route::post('createservice', [HealthController::class, 'createservice']);
 Route::post('createrating', [HealthController::class, 'createrating']);
 
+
+
+
+//Customer Analytics
+Route::get('customeranalytics', [CustomerController::class, 'customeranalytics']);

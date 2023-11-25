@@ -36,12 +36,12 @@
 
 
 
-@extends('kpi4')
-@extends('kpi3')
-@extends('kpi2')
-@extends('kpi1')
+@extends('business.kpi4')
+@extends('business.kpi3')
+@extends('business.kpi2')
+@extends('business.kpi1')
 
-@extends('keymetrics')
+@extends('business.keymetrics')
 
 
 

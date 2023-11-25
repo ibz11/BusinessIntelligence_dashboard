@@ -1,6 +1,6 @@
 <div class="col-md-6 my-1">
     <div class="card">
-    <div class="card-body">KPI3a (leading):</div>
+    <div class="card-body">KPI3a (leading):Number of patient feedback submissions</div>
     <div class="card-body"><canvas id="KPI3a"></canvas></div>
     </div>
 </div>
